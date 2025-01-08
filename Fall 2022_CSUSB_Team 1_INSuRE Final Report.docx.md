@@ -1,5 +1,7 @@
-# FINAL REPORT
-![CSUSB Logo](CSUSB_Logo.png)
+<div style="text-align: center;">
+  <h1>FINAL REPORT</h1>
+  <img src="CSUSB_logo.png" alt="CSUSB Logo">
+</div>
 
 ## Pattern-of-Life Analysis and Deviations for Bluetooth and Bluetooth Low Energy Devices
 
