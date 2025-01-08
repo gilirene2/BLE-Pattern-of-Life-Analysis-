@@ -152,3 +152,137 @@ To begin with, the team’s device configuration consisted of the following:
 - Python version 3.10.8
 - Wireshark version 4.0.1
 - Kismet 2022-08-R1
+
+# BLE Device Pattern-of-Life Analysis
+
+## E. Project Methodology
+
+### Background and Previous Team Influence
+
+Since the project is heavily influenced by the prior team from CSUSB on certain aspects, researchers noted many of their approaches in scanning and gathering information from nearby BLE devices. They initially used an Ubertooth One device to conduct Bluetooth captures, but found it insufficient for their needs when collecting data. They also attempted to use a BLE Texas Instruments CC2541 Mini Development Kit to sniff out Bluetooth data but found it ultimately incompatible with Wireshark.
+
+Despite its limitations, the researchers proceeded with the Ubertooth One because the UAH team from 2021 noted it allowed tracking of individual packets related to specific MAC addresses. The UAH team also found that the Ubertooth One had a 33% chance of finding the correct advertising channels (37, 38, and 39). They recommended not using more than one Ubertooth One unless multiple Raspberry Pi devices were involved. Addressing this concern, the team acquired Raspberry Pi devices to enhance data collection.
+
+---
+
+### E.2 Plan Overview
+
+1. **Data Collection:**
+   - Set up Raspberry Pi devices to work with Ubertooth One devices for BLE packet collection.
+   - Used Kismet to identify the 24-bit LAP (Lower Address Part) and 8-bit UAP (Upper Address Part) of BLE devices within packet contents.
+
+2. **Python Script Refinement:**
+   - Reexamined Python scripts from the previous team to address MAC Address Randomization.
+   - Minimized device interference during data collection.
+
+3. **Data Visualization:**
+   - Refined the data into a controlled dataset and used RStudio to create Time Series graphs illustrating the Bluetooth Pattern-of-Life.
+
+4. **Induced Abnormalities:**
+   - Conducted additional captures with induced abnormalities by frequently turning BLE devices on and off.
+
+---
+
+### E.3 Limitations/Delimitations
+
+1. **Software and Experience Constraints:**
+   - Errors in Kismet limited channel scanning, requiring significant time to resolve.
+   - Issues isolating software persisted despite the use of Faraday bags.
+
+2. **Python Script Challenges:**
+   - Adapting the Python script required extensive trial and error. Exception errors arose when processing `.PCAP` files, which were resolved by modifying the script.
+
+3. **Device Interference:**
+   - Interference reduced data quality. Scans in remote locations partially mitigated this issue.
+
+**Figures:**
+- **Figure #3:** Python script with exception error (`image01.png`).
+- **Figure #4:** Updated Python script without errors (`image02.png`).
+
+---
+
+## F. Findings
+
+### F.1 Findings Overview
+
+The team aimed to create a Pattern-of-Life analysis for BLE devices to understand BLE packet behavior. 
+
+1. **Data Collection:**
+   - Despite challenges with interference, the Ubertooth One was the most effective tool.
+   - Data was saved as `.PCAP` files, filtered with Python scripts, and analyzed in Wireshark.
+
+2. **Analysis and Visualization:**
+   - A Time Series graph was generated in RStudio, with columns like Time, RF.Channel, Signal.dBm, and Length identified as relevant.
+
+**Figures:**
+- **Figure #6:** Analysis with Scapy replication (`image03.png`).
+- **Figure #7:** Time Series graph visualization for Apple Pencil (`image04.png`).
+- **Figure #8:** Data set and code for visualization (`image05.png`).
+
+3. **Wireshark Use:**
+   - Provided detailed inspection of packet contents, such as advertising information and connection details.
+
+**Figure #9:** Packet content in Wireshark (`image06.png`).
+
+---
+
+## G. Issues
+
+### Hardware Challenges:
+- Initially planned to use a Sengled Smart Light Bulb but shifted to Apple Pencil, Finite Keyboard, and TaoTronics earbuds for more relevant data.
+- Unable to group data from three Ubertooth One devices into a single dashboard.
+
+### Kismet and Data Collection:
+- Kismet disabled channel hopping with Ubertooth One, displaying firmware errors. Attempts to use tools like `tshark` did not resolve the issue.
+
+### Python Scripting:
+- Adjusting scripts to process MAC Address Randomization required extensive debugging.
+- Encountered malformed packets and had to drop scanning address functionality.
+
+### Device Patterns-of-Life:
+- Unable to confidently identify packets from specific devices due to interference and lack of manufacturer MAC prefixes.
+
+---
+
+## H. Conclusions and Recommendations
+
+### H.1 Conclusions
+
+- Successfully followed steps to create a Pattern-of-Life analysis for the Apple Pencil but did not fully refine Phase 1.
+- Established an efficient system using Raspberry Pi, Ubertooth One, Wireshark, and Python scripts.
+- Lacked experience and time for deeper exploration, particularly into Phase 2.
+
+### H.2 Future Work
+
+1. Conduct full scan coverage with three Ubertooth Ones and integrate data into a comprehensive dashboard.
+2. Research methods for identifying BLE devices beyond advertising packets.
+3. Examine BrakTooth and SweynTooth for generating anomalies in datasets.
+4. Utilize Raspberry Pi and Ubertooth setups to locate Bluetooth devices in motion.
+
+---
+
+## I. References
+
+1. Helluy-Lafont, É., Boé, A., Grimaud, G., & Hauspie, M. (2020). Bluetooth devices fingerprinting using low-cost SDR. *IEEE FMEC*, 289–294. doi: 10.1109/FMEC49853.2020.9144756
+2. Faragher, R., & Harle, R. (2015). Location Fingerprinting With Bluetooth Low Energy Beacons. *IEEE Journal on Selected Areas in Communications, 33*(11), 2418–2428. doi: 10.1109/JSAC.2015.2430281
+3. Beyer, S. M., Mullins, B. E., Graham, S. R., & Bindewald, J. M. (2018). Pattern-of-Life Modeling in Smart Homes. *IEEE IoT Journal, 5*(6), 5317–5325. doi: 10.1109/JIOT.2018.2840451
+4. Bluetooth SIG. (2019). 2019 Bluetooth Market Update. Retrieved from [bluetooth.com](https://www.bluetooth.com/wp-content/uploads/2018/04/2019-Bluetooth-Market-Update.pdf)
+5. Jouans, L., Viana, A. C., Achir, N., & Fladenmuller, A. (2021). Associating the Randomized Bluetooth MAC Addresses of a Device. *IEEE CCNC*. doi: 10.1109/CCNC49032.2021.9369586
+
+---
+
+## J. Team Biographies
+
+### Jed Bajarias
+A 4th-year undergraduate in Information Systems and Technology (Cybersecurity). Skilled in Wireshark, Raspberry Pi, and technical troubleshooting.
+
+### Frankie Bustamante
+A 4th-year undergraduate with experience in developing Bluetooth devices, Wireshark, Python, and RStudio.
+
+### Matthew Weir
+Completing a Bachelor’s in Information Systems and Technology. Experienced in network device configuration and packet capturing.
+
+### Irene Gil
+An IT professional with five years of experience, pursuing a Bachelor’s in IT (Cybersecurity). Skilled in Microsoft Azure, Active Directory, and data analysis.
+
+
