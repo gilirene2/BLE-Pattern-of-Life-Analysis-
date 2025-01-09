@@ -1,7 +1,7 @@
 <h1 align="center">FINAL REPORT</h1>
 
 <h2 align="center">Pattern-of-Life Analysis and Deviations for Bluetooth and Bluetooth Low Energy Devices</h2>
-<img src="CSUSB_logo.png" alt="CSUSB Logo">
+<img src=".\BLE Image\CSUSB_logo.png" alt="CSUSB Logo">
 <h3 align="center">Department of Information and Decision Sciences<br>California State University, San Bernardino<br>5500 University Parkway,<br>San Bernardino CA 92407</h3>
 
 ## TABLE OF CONTENTS
