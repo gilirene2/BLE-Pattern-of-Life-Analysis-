@@ -1,42 +1,43 @@
 <h1 align="center">FINAL REPORT</h1>
 
 <h2 align="center">Pattern-of-Life Analysis and Deviations for Bluetooth and Bluetooth Low Energy Devices</h2>
-![CSUSB Logo](./CSUSB_logo.png)
+<img src="CSUSB_logo.png" alt="CSUSB Logo">
 <h3 align="center">Department of Information and Decision Sciences<br>California State University, San Bernardino<br>5500 University Parkway,<br>San Bernardino CA 92407</h3>
 
 ## TABLE OF CONTENTS
 
-1. TABLE OF CONTENTS
-2. A. PROJECT SUMMARY
-   - A.1 Short Phrase:
-   - A.2 Keywords:
-   - A.3 Project Description:
-3. B. EXECUTIVE SUMMARY
-   - B.1 Keywords:
-   - B.2 Summary:
-4. C. INTRODUCTION
-   - C.1 Problem Statement:
-   - C.2 Purpose Statement:
-   - C.3 Motivation:
-5. D. Literature Review
-   - D.1 Organization:
-   - D.2 Motivation:
-   - D.3 Alternative Views:
-   - D.4 Reasoning:
-6. E. Methods and Procedures
-   - E.1 Defined Approach
-   - E.2 Plan Overview
-   - E.3 Limitations/Delimitations
-7. F. Findings
-   - F.1 Findings Overview
-   - F.2 Pattern-of-Life (RStudio)
-   - F.3 Wireshark
-8. G. Issues
-9. H. Conclusions and Recommendations
-   - H.1 Conclusions
-   - H.2 Future Work
-10. I. References
-11. J. Team Bio sketch
+## TABLE OF CONTENTS
+1. [TABLE OF CONTENTS](#table-of-contents)
+2. [A. PROJECT SUMMARY](#a-project-summary)
+    - [A.1 Short Phrase:](#a1-short-phrase)
+    - [A.2 Keywords:](#a2-keywords)
+    - [A.3 Project Description:](#a3-project-description)
+3. [B. EXECUTIVE SUMMARY](#b-executive-summary)
+   - [B.1 Keywords:](#b1-keywords)
+   - [B.2 Summary:](#b2-summary)
+4. [C. INTRODUCTION](#c-introduction)
+   - [C.1 Problem Statement:](#c1-problem-statement)
+   - [C.2 Purpose Statement:](#c2-purpose-statement)
+   - [C.3 Motivation:](#c3-motivation)
+5. [D. Literature Review](#d-literature-review)
+   - [D.1 Organization:](#d1-organization)
+   - [D.2 Motivation:](#d2-motivation)
+   - [D.3 Alternative Views:](#d3-alternative-views)
+   - [D.4 Reasoning:](#d4-reasoning)
+6. [E. Methods and Procedures](#e-methods-and-procedures)
+   - [E.1 Defined Approach](#e1-defined-approach)
+   - [E.2 Plan Overview](#e2-plan-overview)
+   - [E.3 Limitations/Delimitations](#e3-limitationsdelimitations)
+7. [F. Findings](#f-findings)
+   - [F.1 Findings Overview](#f1-findings-overview)
+   - [F.2 Pattern-of-Life (RStudio)](#f2-pattern-of-life-rstudio)
+   - [F.3 Wireshark](#f3-wireshark)
+8. [G. Issues](#g-issues)
+9. [H. Conclusions and Recommendations](#h-conclusions-and-recommendations)
+    - [H.1 Conclusions](#h1-conclusions)
+    - [H.2 Future Work](#h2-future-work)
+10. [I. References](#i-references)
+11. [J. Team Bio sketch](#j-team-bio-sketch)
 
 <h2 align="center">A. PROJECT SUMMARY</h2>
 
