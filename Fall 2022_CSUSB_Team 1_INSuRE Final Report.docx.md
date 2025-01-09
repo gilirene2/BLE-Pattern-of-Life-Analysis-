@@ -109,4 +109,79 @@ This project will use previously gathered researched methods and tools from prev
 
 ### C.1 Problem Statement:
 
-The goal is to use previously researched tools and findings to capture and analyze BLE packets, then create a Pattern-of-Life analysis that will help to better understand the way Bluetooth Low Energy functions. Through understanding of BLE functions and packet behavior, BLE security is also better understood. Reviewing prior INSuRE work to this project, the researchers found the 2020 team from California State University, San Bernardino (CSUSB) and the teams from the University of Alabama in Huntsville (UAH) as best fit for the goal the researchers are aiming to achieve. However, since the team will analyze and build up research from those previous teams, there is a matter of differing knowledge and experience, as those teams had more relevant skills pertaining to the project at hand. Despite this, they hope to utilize...
+The goal is to use previously researched tools and findings to capture and analyze BLE packets, then create a Pattern-of-Life analysis that will help to better understand the way Bluetooth Low Energy functions. Through understanding of BLE functions and packet behavior, BLE security is also better understood. Reviewing prior INSuRE work to this project, the researchers found the 2020 team from California State University, San Bernardino (CSUSB) and the teams from the University of Alabama in Huntsville (UAH) as best fit for the goal the researchers are aiming to achieve. However, since the team will analyze and build up research from those previous teams, there is a matter of differing knowledge and experience, as those teams had more relevant skills pertaining to the project at hand. Despite this, they hope to utilize their different backgrounds to add and improve upon the findings from what the 2020 CSUSB team and UAH teams had found. As well, because it was found that each team who was previously involved in the project had built on top of each other’s results, there’s also the problem of putting it all together coherently in specific aims for the project. 
+
+### C.2 Purpose Statement
+
+As the use of Bluetooth and Bluetooth Low Energy devices continues to increase, the vulnerability of these devices becomes a more pressing issue. Refining the methods, tools, and scripts developed by previous INSuRE teams informed this research on BLE to create a more in-depth Pattern-of-Life analysis. By building off of the research from the previous 2020 CSUSB team and teams from UAH, the researchers can analyze their data collection methods and refine them, as the project is able to be followed in similar steps. The researchers have the confidence to anticipate obstacles that might impede the process of refining Phase 1 of the project, as doing so provides a more polished picture to work from. Having a large data set to analyze from, establishing a clear Pattern-of-Life analysis, and visualizing its daily ‘baseline’ patterns from the ‘abnormal,’ will assist in the efforts of monitoring one's own devices in a home or office environment.
+
+### C.3 Motivation
+
+By studying and analyzing the results found from the previous INSuRE teams, such as from UAH and the previous CSUSB team from 2020 who had also worked on this project. From what was analyzed in their resulting methods in working on Phase 1 of the project, the researchers felt that Phase 1 could be refined much further. The researchers found it best to start this process by focusing on the UAH team from 2021, as well as addressing some of the concerns they outlined in their project. For UAH, they expressed concern about possibly rushing Phase 1 (e.g., not having enough data from anomaly scenarios, or datasets being too small for robust Patterns-of-Life). Comparatively, other teams such as the 2020 CSUSB team had noted that their Pattern-of-Life data may have been exposed to outside influence. Throughout the project, researchers revisited these steps and compared the results gathered from different solutions, such as capturing data in remote locations versus capturing data inside Faraday cages/bags.
+
+To a larger extent, securing Bluetooth traffic and developing a detection system are crucial for protecting work and home networks. It was noted especially, that the rapid development of the IoT market, rapid device development, and other device constraints had driven developers to especially poor security implementation, leaving behind a proper security design. (Beyer, 2018, pg. 8). Consequently, it led to the widespread use of Bluetooth attacks that resulted in new areas that were not as heavily connected as they were several years ago. Furthermore, outlets, locks, and light bulbs were not part of the functioning network of smart devices, just as vehicles were not connected to the Internet, until now. Because of that, it was further stated that BLE devices were especially vulnerable because their advertising packets are not made private (Beyer, 2018, pg. 8). This problem will continue to grow as many Bluetooth devices continue to grow in use. The researchers aim to develop the research conducted throughout this project, to help better understand Bluetooth and BLE and better secure home and work networks.
+
+<h2 align="center">D. Literature Review</h2>
+
+### D.1 Organization
+
+The researchers conducted scans on low-cost Bluetooth devices with the intention of creating a Pattern-of-Life analysis, to better understand Bluetooth and Bluetooth Low Energy. Their intention was to focus on current research built from previous teams, specifically the 2020 CSUSB team and the UAH team from 2022, because they in particular were able to culminate their respective research in regards to Phase 1 of the project. The research will be used with the intention of building from previous research rather than completely altering or disregarding the previous team’s results. Ultimately, the team will have the project smooth out the details in Phase 1, so that moving forward to Phase 2 will yield the best possible results. Previous research suggests that Bluetooth devices are falling victim to Denial-of-Service attacks, passive/active eavesdropping, Man-In-The-Middle Attacks, message modifications, and resource misappropriation. (Gupta & Kumar, 2015) The 2020 CSUSB team referenced this research in which the Bluetooth data transmission was intercepted, with the use of an Adafruit Bluetooth LE sniffer and Raspberry Pi.
+
+### D.2 Motivation
+
+As the market continues to grow, and more Bluetooth devices are introduced to many people’s networks, one should also be aware of how secure their devices really are. Bluetooth technology in the past decade has expanded greatly, finding its way into smart home appliances, to items people carry daily such as smartwatches or fitness trackers. In 2019, Bluetooth SIG (Bluetooth Special Interest Group), reported that the “Bluetooth Smart Home will see an increase in device shipments in the next few years” with an estimated “1.15 billion devices” to ship in 2023 alone (Bluetooth SIG, n.d.). This surge in connected devices plays a large role in why people should be concerned about the types of data their devices control, and how susceptible their devices are to malicious attacks. The team’s research and the work done in this project has made everyone aware of the importance of developing a system that can detect changes in the behavior of their devices.
+
+### D.3 Alternative Views
+
+New BLE protocols have been implemented to improve the security of BLE devices, and strides have been made for manufacturers to update device firmware and updates. Bluetooth and BLE researchers in this field have also noted the importance of improving and implementing more secure protocols for BLE devices as well.
+
+### D.4 Reasoning
+
+Through this project, the researchers had achieved their main goal of creating a system that allows users to be more secure in a highly populated Bluetooth environment by identifying devices that may be acting abnormally. As the Internet of Things (IoT) technology is ever-expanding, with many IoT devices using Bluetooth it is necessary to have a system in place to detect abnormalities. This system is intended to work off open source tools and software which the average home user of Bluetooth devices will be able to utilize. The researchers intend to test and collect data on popular devices frequently used in day-to-day tasks, which include an Apple Pencil, a Finite Bluetooth Keyboard, and TaoTronics BLE earbuds. Developing this system can expose risks in network security and improve our awareness of the types of devices people bring into our networks. Going beyond the scope of the home network, this system can also have importance in improving workplace infrastructure that seeks to improve the security of their Bluetooth devices.
+
+<h2 align="center">E. Methods and Procedures</h2>
+
+### E.1 Defined Approach
+
+To begin with, the team’s device configuration consisted of the following:
+
+**Devices Used**
+- 2x Raspberry Pi 400 kits
+- 3x Ubertooth One version 2020-12-R1
+- 1x Raspberry Pi 4, Model B 8GB
+- 3x Samsung EVO Plus 128GB SD cards
+- 1x Apple Pencil (1st Generation)
+- 1x Finite Wireless Bluetooth Keyboard
+- 1x TaoTronics SoundLiberty 79 Bluetooth earbuds
+
+*Figure #1*
+
+In addition, here was the software used during the project:
+
+**Software Used**
+- RStudio version “Spotted Wakerobin”
+- Scapy version 2.5.0
+- Python version 3.10.8
+- Wireshark version 4.0.1
+- Kismet 2022-08-R1
+
+*Figure #2*
+
+Since the project is heavily influenced by the prior team from CSUSB on certain aspects, researchers noted many of their approaches in scanning and gathering information from nearby BLE devices. They initially used an Ubertooth One device to conduct Bluetooth captures, but found it insufficient for their needs when collecting data. They also attempted to use a BLE Texas Instruments CC2541 Mini Development Kit to sniff out Bluetooth data, but found it ultimately incompatible with Wireshark. To that regard, the researchers still proceeded to use an Ubertooth One because, despite its limitations, the UAH team from 2021 had noted that using an Ubertooth One had allowed tracking of individual packets, related to specific MAC addresses.
+
+Because the researchers had analyzed some of the methods the previous teams had used, including errors and solutions, they were able to streamline their approaches while working towards the goal of refining Phase 1. The UAH team from 2021 noted that using an Ubertooth One, it only had a 33% chance of finding the right advertising channels of 37, 38, and 39. They recommended not to use more than one Ubertooth One device unless there were multiple Raspberry Pi devices involved, and to that end, the team directly addressed that concern by acquiring those devices. Data collection methods were according to what had the most success, as the researchers analyzed various teams who were previously involved in the project, and the CSUSB team from 2020 and UAH were the most prominent of all in results of their data collection methods.
+
+### E.2 Plan Overview
+
+- Developed an efficient way to collect data using information from the team’s research and findings for the previous teams.
+- Setting up Raspberry Pi devices, these would function with the Ubertooth One devices to collect data on the BLE packets. With Kismet, the 24-bit LAP (Lower Address Part) and 8-bit UAP (Upper Address Part) can be identified to determine a BLE device, from within its packet contents.
+- Reexamined the Python scripts from the previous team in order to deal with MAC Address Randomization. This script was intended to help in identifying the team's Bluetooth devices and so in order to help this process, the team attempted to minimize device interference during the process when it occurred.
+- Once the data was refined, and a controlled data set was present, the packets from that were collected to create Time Series graphs using RStudio to illustrate the Bluetooth Pattern-of-Life.
+- After the initial Pattern-of-life was created, the team conducted another capture of their devices, but this time of induced abnormalities to the BLE devices by turning the device on and off frequently.
+
+### E.3 Limitations/Delimitations
+
+There were many experiments conducted based on various data, and resulting information from the 2020 CSUSB team and UAH teams. As the team progressed, many limitations were revealed in regards to relevant experience, in handling the software and hardware used throughout the project. The impact of software limitations occurred during the data collection portion, as the decision to use Kismet limited the channels it could scan on, and much time was spent in order to find a solution to the errors in Kismet. In addition, there were also issues isolating their software and encountered interference even with the use of a Faraday bag. After decreasing their data set by conducting scans in a remote location, the researchers began examining the Python script from the previous CSUSB team. After making needed alterations, the team ran into an exception error, requiring them to alter the script so it could handle more bytes in order to avoid the error shown below in Figure #3.
+
+<img src="Python_Script.png" alt="Python Script With Error" >
+
