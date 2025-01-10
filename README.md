@@ -55,4 +55,4 @@ We’re a team of curious minds and passionate problem-solvers, combining techni
 Each of us brought a unique skill set to make this project possible, from IT infrastructure and network security to data analysis and hardware troubleshooting.  
 
 ---
-👀 **[Check out the full report here!](Fall 2022_CSUSB_Team 1_INSuRE Final Report.docx.md)**  
+👀 **[Check out the full report here!](.\Fall 2022_CSUSB_Team 1_INSuRE Final Report.docx.md)**  
