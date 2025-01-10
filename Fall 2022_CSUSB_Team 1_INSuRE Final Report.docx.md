@@ -230,8 +230,85 @@ Figure #8
 By utilizing Wireshark, the researchers were able to inspect the packet contents and make out more information than one would be able to view in Kismet, such as the contents of the packets.  It shows the contents of the packet header, the source, and destination of packets, and if the packet was sent on a primary or secondary advertising channel. Figure #9 below shows the packet content as it is shown in Wireshark for the advertising information utilized to establish a connection between two devices, flags, latency, and access address are shown, as well as other important information. 
 
 <p align="center">
-<img src=".\BLE Image\Timeseries_Analysis.jpg" alt="Timeseries" >
+<img src=".\BLE Image\Wireshark.png" alt="Wireshark" >
 </p>
 <p align="center">
 Figure #9
 </p>
+
+<h2 align="center">G. Issues</h2>
+
+### Hardware:
+
+Previously, the team had planned to use a Sengled Smart Light Bulb as part of the devices to collect data from. Unfortunately, there was no use for it as it was found that the Apple Pen, the Finite Keyboard, and the TaoTronics BLE earbuds were better fit in what Bluetooth devices one would most likely have, in a home or office setting. And as well, the researchers had noted in their proposal anticipating the issue of having all three Ubertooth Ones with their respective data outputs, since each Ubertooth One will capture data on all three primary advertising channels. In that scenario, the team had originally asked the technical directors of the project what tools we could use to group our three data capture devices, in a comprehensive dashboard for viewing. Unfortunately, the team was  unable to properly group their three Ubertooth Ones in-tandem with all their devices due to circumstances beyond their control.
+
+### Kismet (Data Collection):
+
+The researchers had originally used Kismet to identify the 24-bit LAP (Lower Address Part) and 8-bit UAP (Upper Address Part) in determining a BLE device, from its MAC Address packet contents. However, it was noted before that using Ubertooth One with Kismet disables Ubertooth’s channel hopping functionality, as Kismet displays firmware and software errors when changing the advertising channel to anything but 37. And  those very issues were encountered when trying to find a workaround of the problem.
+This issue was mentioned to the technical directors, who stated that tshark, a terminal-version of Wireshark, might help as well as using the command of ‘ubertooth-btle -f -A 38’ to sniff out all connections to another advertising channel, like 38. Unfortunately, understanding some of the suggested tools took some time, and the technical directors had mentioned that if there was no luck in finding results of using those tools, then it was best to use what works for the team within their device set-up. Which is why the use of Kismet had to be cut along the way, due to errors using it in-tandem with Ubertooth One.
+
+### Python (Grouping Data):
+
+There were originally some issues with adapting the Python MAC Address Randomization Correlation scripts created by the previous CSUSB INSuRE 2020 team to work with our data sets. MAC Address Randomization is a security design in Bluetooth standards  which causes devices to replace random values of their MAC Address. This security design is implemented to prevent malicious actors from tracing a public advertising address back to a specific Bluetooth device. When BLE devices are activated, they send out what is called a public advertising packet, which contains an IEEE 802 MAC address (Jouans et al., 2). This public advertising address is used to allow scanning devices to know the identity of a device, and choose to connect to the device if desired.
+The goal of adapting these Python scripts was to group Bluetooth MAC addresses of all data captured from Bluetooth devices, as they randomize, by examining the advertising packet contents. The items pulled from these packets and used by these scripts include notable information, such as the advertising address, manufacturer length, manufacturer data type, manufacturer company id, flags, flag types, and packet headers. By utilizing several of these fields, the Python script is able to convert the six raw bytes of an advertising address into a MAC address. While it may be possible to distinguish the small changes of a couple of bytes in a MAC address when it randomizes, this problem becomes much more difficult when looking at several thousands of packets at once. Without utilizing the script, it can not be determined whether the packets used in graphing through RStudio were from the devices chosen by the researchers, or other devices outside of that. Issues in understanding the code were paramount, as after some analyzing and getting the assistance from one of the former team members from the 2020 CSUSB team who wrote the script, the researchers were able to have the code adapt to their data sets after changing certain parameters. The main issue occurring with our data set was ‘unpack’ errors at several functions in the script, as seen in Figure #10. 
+
+<p align="center">
+<img src=".\BLE Image\unpack_error.png" alt="Unpack Error" >
+</p>
+<p align="center">
+Figure #10
+</p>
+
+Many of these issues can be solved by examining the data sets and removing packets that do not meet the criteria specified to be read in the script. For example, Figure #11 shows an ideal packet makeup for running through the script. 
+
+<p align="center">
+<img src=".\BLE Image\ideal_packet.png" alt="Ideal packet" >
+</p>
+<p align="center">
+Figure #11
+</p>
+
+Many of the packets that refuse to work with the scripts are malformed packets, which are packets that cannot be dissected further in Wireshark, which can be for a number of reasons. These types of packets may contain a packet length that cannot be processed by the script, and thus will result in an unpack buffer error. Additionally, another issue the researchers ran into using the script was the “scanning address”. While some devices may emit a scanning address, it may not always be picked up with the scanner or software being used. As a result, this function had to be dropped, and the script relied on only using advertising addresses to return a MAC address. 
+
+### Finite & TaoTronics Scans (Patterns-of-Life)
+
+While the researchers were able to create a Pattern-of-Life for the Apple Pencil Generation 1 device, they were unable to complete the patterns for our two additional devices. Ultimately, they were not able to determine, with 100% accuracy, if the packets captured from a device were truly from their selected devices. Many techniques were used to attempt to determine the source of packets, such as:
+- Destination Address = device to iPad Mac Address
+- Packets captured did not directly reveal as being connected to the iPad
+- Comparing scans of several types: Static, Followed, Promiscuous
+  - Promiscuous does not print out advertisements, cannot be used in script to obtain MAC address
+  - Static & Followed (both captured in the Faraday bag) suffered from outside packets being picked up.
+- Comparing scans of Faraday Bag to Remote Environment Scans
+  - Was able to decipher most packets from not being Finite or Taotronics based, however most scans left after were either malformed or had no discernible differences between them enough to make an educated guess on which packet was from which device.
+- Manufacturer IDs and MAC Prefixes
+  - Both device manufacturers of Taotronics and Finite, were not listed with a MAC/Advertising prefix.
+  - Bluetooth Companies can request unique identifiers made up of a few bytes, that are uniquely assigned to them by Bluetooth SIG, both Taotronics (The Sunvalley Group) and Finite (Fintie LLC) do not own one.
+
+<h2 align="center">H. Conclusions and Recommendations</h2>
+
+### H.1 Conclusions
+
+As the research went to its final stages, it was concluded that while the team was able to successfully follow similar steps in creating a Pattern-of-Life analysis for their Generation 1 Apple Pencil, and had greatly learned of how Bluetooth Low Energy functions had worked in the process, the goal of refining Phase 1 of the project ultimately, was not achieved. The researchers stated in their introductions that they planned to work off previous team findings and research, in which repurposing some of that information took time to align with their intentions. After some time, an efficient base system was established for capturing BLE device traffic by using a Raspberry Pi 4 device and an Ubertooth One, along with using Wireshark and the Python scripts. This enabled the researchers to capture device traffic, identify devices and filter out unwanted packets to ultimately be used for data analysis in RStudio. However, the researchers lacked experience and time as there was much trouble in collecting, as well as testing, the data. The researchers would have liked to see further progress, if they had a more thorough understanding of the tools and methods used by the previous teams. And because they were not able to look deeply into Phase 2 due to lack of time and experience, further research is needed in regards to machine learning algorithms. Ultimately, given the research done in analyzing the methods and data from the 2020 CSUSB team and UAH, as well as lacking pertaining experience, it was a learning experience in understanding how BLE devices were tracked and identified of their packet contents. Figuring out the means of dissecting and reading how Bluetooth data works, with respect to security, was something the team had learned deeply well throughout the project.
+
+### H.2 Future Work
+
+Working on this project in the future would include completing some of the steps our team planned on completing as well as working towards Phase 2 of the project. One of them is managing a full scan coverage of all devices with 3 Ubertooth One devices, and finding a way to view the outputted data in some sort of comprehensive dashboard for viewing. Another task is managing a scan of three Bluetooth devices, and properly inducing anomalies in all of them, such as restarting the device while in the middle of data collection. Some devices, such as the Apple Pencil the researchers used, may not fit well to that regard because it cannot be powered off unless the device dies. As a result, an Apple Pencil would constantly send out packets and disrupt our future scans. The team is also interested in researching more methods for identifying BTLE devices outside of advertising packets, as many of the problems from the chosen off-brand devices were much harder to identify than established brands such as Apple. Whether that be through the use of different Bluetooth sniffers, or software, the team would like to be able to identify with 100% accuracy, Bluetooth devices from both name brand and generic brand Bluetooth devices. Additionally, the team would be interested in examining the BrakTooth and SweynTooth as technical methods for purposely generating anomalies in our data sets. In the future, the researchers would also like to make better use of our Raspberry Pi devices and Ubertooths, as they would like to set up a scanning environment to determine if one can spot the location of a bluetooth device as it travels around on an individual.
+
+<h2 align="center">I. References</h2>
+
+- É. Helluy-Lafont, A. Boé, G. Grimaud and M. Hauspie, "Bluetooth devices fingerprinting using low cost SDR," 2020 Fifth International Conference on Fog and Mobile Edge Computing (FMEC), 2020, pp. 289-294, doi: 10.1109/FMEC49853.2020.9144756.
+- R. Faragher and R. Harle, "Location Fingerprinting With Bluetooth Low Energy Beacons," in IEEE Journal on Selected Areas in Communications, vol. 33, no. 11, pp. 2418-2428, Nov. 2015, doi: 10.1109/JSAC.2015.2430281.
+- S. M. Beyer, B. E. Mullins, S. R. Graham and J. M. Bindewald, "Pattern-of-Life Modeling in Smart Homes," in IEEE Internet of Things Journal, vol. 5, no. 6, pp. 5317-5325, Dec. 2018, doi: 10.1109/JIOT.2018.2840451.
+- Bluetooth SIG. (n.d.). 2019-Bluetooth-Market-Update [Presentation]. bluetooth.com. https://www.bluetooth.com/wp-content/uploads/2018/04/2019-Bluetooth-Market-Update.pdf
+- Loïc Jouans, Aline Carneiro Viana, Nadjib Achir, Anne Fladenmuller. Associating the Randomized Bluetooth MAC Addresses of a Device. CCNC 2021 - IEEE Consumer Communications & Networking Conference, Jan 2021, Las Vegas, United States. Ffhal-03045555
+- Kumar, M., & Gupta, B. K. (2015, March). Security for Bluetooth enabled devices using BlipTrack Bluetooth detector. In 2015 International Conference on Advances in Computer Engineering and Applications (pp. 155-158). IEEE.
+
+<h2 align="center">J. Team Bio Sketch</h2>
+
+Jed Bajarias is a 4th-year undergraduate student here at CSUSB. He was a transfer student and is now obtaining his Bachelor’s Degree in Information Systems and Technology with a concentration in Cybersecurity. From his time up to here at CSUSB, he has learned many concepts from Network Fundamentals to Ethical Hacking as well as the use of packet analysis through Wireshark, and the configuration of a Raspberry Pi. Outside of school, he’s working as a Student Assistant at the Technology Services Center at CSUSB, where he has provided troubleshooting support for hardware and software issues for many within the campus community, as well as managing the campus computer lab. He’s had experience working in teams and has participated in many projects through the school’s Cybersecurity club.
+
+Frankie Bustamante is a current 4th-year undergraduate student at CSUSB. He is currently attending to achieve his Bachelor’s degree in Information Systems and Technology with a concentration in Cybersecurity. Frankie has previously worked with developing Bluetooth devices and networks during his NASA project and has experience in creating Raspberry Pi projects. Frankie also has experience in using Wireshark, Python, and RStudio, through various courses and school projects over the course of his education. Frankie also works in a lab located on the CSUSB campus, where he has access to electronic resources the team could use to setup and run equipment.
+
+Matthew Weir is completing his Bachelor’s Degree in Information Systems and Technology at CSUSB. He has worked on multiple school projects involving packet capturing with tools such as Wireshark and setting up Raspberry Pi’s and configuring Linux devices. Matthew has technical experience working for the Kern County Schools as a System Support Tech, where he configures network devices, troubleshoots technical issues, and supports end users.
+
+Irene Gil has 5 years of experience in IT and customer service and is currently working towards her Bachelor’s degree in Information Technology with a concentration on Cyber Security, at CSUSB. Irene is a transfer student from Moreno Valley College where she earned an Associate of science in business administration, and in Information systems and Technology. While at Moreno Valley college she learned networking basics, and computer hardware and worked with a team to create python scripts for vulnerability scans. She currently holds a position as an IT Apprentice for the Moreno Valley City Hall Office. Her previous position included working as a technician at the Moreno Valley Unified School District, Riverside County Office of Education, Acorn Technology Services, and Moreno Valley College. Through these experiences, she gained knowledge in Microsoft Azure, Active Directory, project management, content creation, social media management, data analysis, Microsoft Office, and Virtual Machines.
