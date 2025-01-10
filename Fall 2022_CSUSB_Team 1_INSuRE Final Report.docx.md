@@ -46,15 +46,15 @@
 *California State University, San Bernardino*  
 
 Technical Directors:  
-Stephanie Polczynski  
-sdpolcz@uwe.nsa.gov  
 
-Erik Brasile  
-eabrasi@uwe.nsa.gov  
+Stephanie Polczynski  
+ 
+Erik Brasile    
 
 Project Supervisor:  
+
 Tony Coulson  
-tcoulson@csusb.edu  
+
 
 **INSuRE Team - Fall 2022:**
 
@@ -85,24 +85,28 @@ The researchers will use previously researched methods and tools from previous I
 *California State University, San Bernardino*  
 
 Technical Directors:  
+
+
 Stephanie Polczynski  
   
 
 Erik Brasile  
 
 
-Project Supervisor:  
+Project Supervisor: 
+
 Tony Coulson  
-tcoulson@csusb.edu  
+
 
 **INSuRE Team - Fall 2022:**  
-Matthew Weir 
 
-Jed Bajarias 
+- Matthew Weir 
 
-Frankie Bustamante
+- Jed Bajarias 
 
-Irene Gil   
+- Frankie Bustamante
+
+- Irene Gil   
 
 ### B.1 Keywords:
 
