@@ -188,5 +188,50 @@ There were many experiments conducted based on various data, and resulting infor
 *Figure #3*
 
 Adjusting the Python script to work with the team’s data set required a lot of trial and error, however, they were able to rewrite the script so that it functioned with their .PCAP files. The images below display the Python script functioning with no exception error as shown in Figure #4.
+<p align="center">
+<img src=".\BLE Image\Python_NoError.png" alt="Python Script With no Error" >
+</p>
+<p align="center">
+Figure #4
+</p>
 
-<img src=".\BLE Image\Python_NoError.png" alt="Python Script With Error" >
+<h2 align="center">F. Findings</h2>
+
+### F.1 Findings Overview
+The team's aim was to create a Pattern-of-Life analysis on BLE devices in order to better understand how Bluetooth Low-Energy devices function and to better understand the behavior of BLE packets. The first step was establishing an effective method to collect Bluetooth data, and when reviewing previous research data, it was concluded that the best choice to most effectively collect that data was by using the Ubertooth One. Despite their efforts to minimize time spent on data collection, they ran into some errors with device interference. After collecting the needed information, it was saved in the form of a .PCAP file then efforts were made to filter out unnecessary information using Python scripts written by previous teams, and the filter feature on Wireshark.  Other methods were also used by the previous CSUSB 2020 team, as the team  understood the reasons why they chose not to go those routes, with Scapy being notable as shown in Figure #6.
+
+<p align="center">
+<img src=".\BLE Image\Scapy.png" alt="Scapy" >
+</p>
+<p align="center">
+Figure #6
+</p>
+It was a partial replication of the steps in their attempts of a Pattern-of-Life analysis through Scapy. Their goal was to find useful information in the form of a hex-dump, and they ultimately determined that the data outputted by Scapy was insufficient. Replicating how they did the process allowed the researchers in further understanding of determining the best ways in analyzing Bluetooth traffic data, in a measure of small achievement.
+
+### F.2 Pattern-of-Life (RStudio)
+Consistent with prior research teams, RStudio was also used to conduct a Pattern-of-Life analysis for the team’s chosen devices. The reason for doing so is because the researchers found that the 2020 CSUSB team had regarded RStudio to be the best way of statistical analysis of Bluetooth data captures, and all-around displaying an aggregated collection of data. And in following the goal of ultimately refining Phase 1 of the project, the team had gone in similar steps of using RStudio as well. While the previous 2020 CSUSB team discontinued the use of the Ubertooth One due to insufficient evidence of proper data collection properties, the researchers still went on with using the Ubertooth One, because as mentioned before, the UAH team from 2021 noted that the Ubertooth One allowed tracking of individual packets, related to specific MAC addresses, despite its limitations. In visualizing a Pattern-of-Life, the 2020 CSUSB team concluded that a Time Series analysis graph was the best way to get a picture of ‘baseline’ Bluetooth traffic. In addition, the columns of Time, RF.Channel, Signal.dBm, and Length were chosen as the most relevant items to display in a Time Series graph, as while the columns are slightly different names from what the 2020 CSUSB team had for their Time Series graph, they are essentially the same.
+	After some understanding of how RStudio worked, the researchers had converted their .PCAP file to a CSV file for it to be read, then replicated the code from how it was done. Below was the resulting visualization of  Bluetooth data coming from the Apple Pencil device.
+
+<p align="center">
+<img src=".\BLE Image\RStudio.jpg" alt="RStudio" >
+</p>
+<p align="center">
+Figure #7
+</p>
+In the actual file format, the information can be interacted by moving the mouse and seeing the numbers change accordingly. Each column was color-coded to show each section, such as the  Length column overlapping with the RF.Channel column. For this singular instance, the data set of our Apple Pencil was added and imported following the guide in how the previous CSUSB team had done it so. With this, the researchers were able to visualize what a graphed Pattern-of-Life looked like for their Apple Pencil device. And shown the image of Figure #8, is the data set and code used to produce the Time Series analysis image above.
+<p align="center">
+<img src=".\BLE Image\Timeseries_Analysis.jpg" alt="Timeseries" >
+</p>
+<p align="center">
+Figure #8
+</p>
+
+### F.3 Wireshark
+By utilizing Wireshark, the researchers were able to inspect the packet contents and make out more information than one would be able to view in Kismet, such as the contents of the packets.  It shows the contents of the packet header, the source, and destination of packets, and if the packet was sent on a primary or secondary advertising channel. Figure #9 below shows the packet content as it is shown in Wireshark for the advertising information utilized to establish a connection between two devices, flags, latency, and access address are shown, as well as other important information. 
+
+<p align="center">
+<img src=".\BLE Image\Timeseries_Analysis.jpg" alt="Timeseries" >
+</p>
+<p align="center">
+Figure #9
+</p>
