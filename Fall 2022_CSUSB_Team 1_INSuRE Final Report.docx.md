@@ -185,3 +185,8 @@ There were many experiments conducted based on various data, and resulting infor
 
 <img src=".\BLE Image\Python_Script.png" alt="Python Script With Error" >
 
+*Figure #3*
+
+Adjusting the Python script to work with the team’s data set required a lot of trial and error, however, they were able to rewrite the script so that it functioned with their .PCAP files. The images below display the Python script functioning with no exception error as shown in Figure #4.
+
+<img src=".\BLE Image\Python_NoError.png" alt="Python Script With Error" >
