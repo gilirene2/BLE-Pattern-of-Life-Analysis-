@@ -82,19 +82,19 @@ The researchers will use previously researched methods and tools from previous I
 
 Technical Directors:  
 Stephanie Polczynski  
-sdpolcz@uwe.nsa.gov  
+  
 
 Erik Brasile  
-eabrasi@uwe.nsa.gov  
+
 
 Project Supervisor:  
 Tony Coulson  
 tcoulson@csusb.edu  
 
 **INSuRE Team - Fall 2022:**  
-Matthew Weir - 007476255@coyote.csusb.edu  
-Jed Bajarias - 007747942@coyote.csusb.edu  
-Frankie Bustamante - 007690885@coyote.csusb.edu  
+Matthew Weir  
+Jed Bajarias 
+Frankie Bustamante
 Irene Gil - 007202553@coyote.csusb.edu  
 
 ### B.1 Keywords:
