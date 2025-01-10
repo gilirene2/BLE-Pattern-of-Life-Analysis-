@@ -56,11 +56,15 @@ Project Supervisor:
 Tony Coulson  
 tcoulson@csusb.edu  
 
-**INSuRE Team - Fall 2022:**  
-Matthew Weir - 007476255@coyote.csusb.edu  
-Jed Bajarias - 007747942@coyote.csusb.edu  
-Frankie Bustamante - 007690885@coyote.csusb.edu  
-Irene Gil - 007202553@coyote.csusb.edu  
+**INSuRE Team - Fall 2022:**
+
+Matthew Weir 
+
+Jed Bajarias   
+
+Frankie Bustamante  
+
+Irene Gil 
 
 ### A.1 Short Phrase:
 
@@ -92,10 +96,13 @@ Tony Coulson
 tcoulson@csusb.edu  
 
 **INSuRE Team - Fall 2022:**  
-Matthew Weir  
+Matthew Weir 
+
 Jed Bajarias 
+
 Frankie Bustamante
-Irene Gil - 007202553@coyote.csusb.edu  
+
+Irene Gil   
 
 ### B.1 Keywords:
 
