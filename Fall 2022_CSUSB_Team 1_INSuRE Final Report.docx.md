@@ -183,5 +183,5 @@ Because the researchers had analyzed some of the methods the previous teams had 
 
 There were many experiments conducted based on various data, and resulting information from the 2020 CSUSB team and UAH teams. As the team progressed, many limitations were revealed in regards to relevant experience, in handling the software and hardware used throughout the project. The impact of software limitations occurred during the data collection portion, as the decision to use Kismet limited the channels it could scan on, and much time was spent in order to find a solution to the errors in Kismet. In addition, there were also issues isolating their software and encountered interference even with the use of a Faraday bag. After decreasing their data set by conducting scans in a remote location, the researchers began examining the Python script from the previous CSUSB team. After making needed alterations, the team ran into an exception error, requiring them to alter the script so it could handle more bytes in order to avoid the error shown below in Figure #3.
 
-<img src="Python_Script.png" alt="Python Script With Error" >
+<img src=".\BLE Image\Python_Script.png" alt="Python Script With Error" >
 
